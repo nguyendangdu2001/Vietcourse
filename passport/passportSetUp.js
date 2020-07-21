@@ -3,7 +3,8 @@ import passport from "passport";
 import User from "../models/userModel.js";
 import GoogleOauthTokenStrategy from "passport-google-oauth-token";
 import FacebookTokenStrategy from "passport-facebook-token";
-
+import GoogleStrategy from "passport-google-token";
+const GoogleTokenStrategy = GoogleStrategy.Strategy
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
@@ -14,7 +15,7 @@ passport.deserializeUser((id, done) => {
 });
 
 passport.use(
-    new GoogleOauthTokenStrategy(
+    new GoogleTokenStrategy(
         {
             clientID: authConstants.googleKey.googleClientId,
             clientSecret: authConstants.googleKey.googleClientSecretKey,
@@ -48,6 +49,7 @@ passport.use(
         }
     )
 );
+
 passport.use(
     new FacebookTokenStrategy(
         {
