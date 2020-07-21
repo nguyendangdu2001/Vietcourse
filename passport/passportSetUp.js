@@ -1,7 +1,6 @@
 import * as authConstants from "../authKey/authKey.js";
 import passport from "passport";
 import User from "../models/userModel.js";
-import GoogleOauthTokenStrategy from "passport-google-oauth-token";
 import FacebookTokenStrategy from "passport-facebook-token";
 import GoogleStrategy from "passport-google-token";
 const GoogleTokenStrategy = GoogleStrategy.Strategy
