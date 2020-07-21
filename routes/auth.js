@@ -5,7 +5,7 @@ import passport from 'passport'
 import '../passport/passportSetUp.js'
 
 const router = express.Router();
-router.post('/google',passport.authenticate("google-oauth-token"),(req,res)=> {
+router.post('/google',(req,res)=>{console.log(req.body.access_token);},passport.authenticate("google-oauth-token"),(req,res)=> {
     res.send(req.user)
 });
 router.post('/facebook',passport.authenticate('facebook-token'),(req,res)=> {
