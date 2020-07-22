@@ -20,6 +20,7 @@ passport.use(
             clientSecret: authConstants.googleKey.googleClientSecretKey,
         },
         (accessToken, refreshToken, profile, done) => {
+            console.log(profile);
             User.findOne({ "google.id": profile.id }, (err, currentUser) => {
                 if (currentUser) {
                     (currentUser.name = profile.displayName),
@@ -31,7 +32,7 @@ passport.use(
                     new User({
                         userName: "google" + profile.emails[0].value,
                         name: profile.displayName,
-                        userPic: profile.photos[0].value,
+                        userPic: profile._json.picture,
                         google: {
                             id: profile.id,
                             name: profile.displayName,
