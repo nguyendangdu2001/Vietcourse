@@ -3,7 +3,7 @@ import passport from "passport";
 import User from "../models/userModel.js";
 import FacebookTokenStrategy from "passport-facebook-token";
 import GoogleStrategy from "passport-google-token";
-const GoogleTokenStrategy = GoogleStrategy.Strategy
+const GoogleTokenStrategy = GoogleStrategy.Strategy;
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });

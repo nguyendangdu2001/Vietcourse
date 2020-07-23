@@ -74,7 +74,7 @@ router.post("/buy", async (req, res) => {
                 req.user.id,
                 { $addToSet: { ownCourses: { $each: req.body.courses } }, $set: { cart: [] } },
                 { useFindAndModify: true },(err,user)=>{
-                    res.send(user.ownCourses)
+                    res.sendStatus(204)
                 }
             );
             
@@ -83,18 +83,14 @@ router.post("/buy", async (req, res) => {
         res.status(409).send(error);
     }
 });
-router.get("/create", async (req, res) => {
-    const user = new User({
-        name: "Someone",
-        userName: "nguyendangdu2001",
-        password: "123456",
-    });
-    try {
-        const newUser = await user.save();
-        res.send(newUser);
-    } catch (error) {
-        res.send(error);
-    }
+router.get("/owncourse", (req, res) => {
+    if (!req.user) res.status(401).send({ mes: "not loggedin" });
+    User.findById(req.user.id)
+        .populate("ownCourses")
+        .exec((err, data) => {
+            if(err) throw err
+            res.send(data.ownCourses);
+        });
 });
 
 export default router;
