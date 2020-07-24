@@ -17,6 +17,11 @@ router.post("/signup", async (req, res) => {
     }
     res.status(401).send({ mes: "invalid user data" });
 });
+router.get("/logout", (req, res) => {
+    req.session = null;
+    req.logOut();
+    res.sendStatus(204);
+});
 router.get("/info", (req, res) => {
     if (req.user) {
         res.send(req.user);
@@ -32,11 +37,7 @@ router.get("/cart", (req, res) => {
             res.send(data.cart);
         });
 });
-router.get("/logout", (req, res) => {
-    req.session = null;
-    req.logOut();
-    res.sendStatus(204);
-});
+
 router.post("/addcart", (req, res) => {
     if (!req.user) res.status(401).send({ mes: "Unauthorize" });
     User.findByIdAndUpdate(
