@@ -60,6 +60,9 @@
     padding: 2px 10px;
 }
 .InProgressCourses .course-main-content .course-main-content-center .course-main-content-secondary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .InProgressCourses .course-main-content .course-main-content-center .course-main-content-secondary .course-main-content-button{
     display: flex;
