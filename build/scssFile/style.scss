@@ -6,8 +6,8 @@
 }
 body {
     margin: 0;
-    padding: 0!important;
-    overflow: scroll!important;
+    padding: 0 !important;
+    overflow: scroll !important;
     &::-webkit-scrollbar {
         width: 0.5rem;
     }
@@ -20,8 +20,11 @@ body {
         background: rgb(130, 168, 225);
     }
 }
-button{
-    outline: none!important;
+button {
+    outline: none !important;
+}
+span {
+    line-height: 1;
 }
 i {
     text-align: center;
@@ -111,9 +114,15 @@ header {
         .logo {
             position: relative;
             font-size: 35px;
+            line-height: 1;
             width: fit-content;
             text-decoration: none;
             margin-right: 16px;
+            vertical-align: middle;
+            @media (max-width: 572px) {
+                font-size: 1.5rem;
+                margin-right: 0.5rem;
+            }
         }
         .subject-dropdown {
             margin-right: 16px;
@@ -133,6 +142,11 @@ header {
             border-radius: 9999px;
             height: 40px;
             flex-grow: 1;
+            @media (max-width: 572px) {
+                flex-grow: unset;
+                margin-left: auto;
+                align-items: center;
+            }
             input[type="text"] {
                 outline: none;
                 border: none;
@@ -140,6 +154,9 @@ header {
                 width: 100%;
                 margin-left: 10px;
                 line-height: 40px;
+                @media (max-width: 572px) {
+                    display: none;
+                }
             }
             button {
                 border-radius: 9999px;
@@ -148,6 +165,11 @@ header {
                 outline: none;
                 border: none;
                 color: white;
+                @media (max-width: 572px) {
+                    border-radius: 50%;
+                    width: 3rem;
+                    height: 3rem;
+                }
             }
         }
     }
@@ -158,6 +180,15 @@ nav {
         box-shadow: 0 16px 10px 0 rgba(0, 0, 0, 0.14), 0 11px 18px 0 rgba(0, 0, 0, 0.12),
             0 13px 5px -1px rgba(0, 0, 0, 0.2);
         z-index: 999;
+        @media (max-width: 572px) {
+            top: 64px;
+            box-shadow: 0 8px 5px 0 rgba(0, 0, 0, 0.14), 0 5px 9px 0 rgba(0, 0, 0, 0.12),
+                0 7px 3px -1px rgba(0, 0, 0, 0.2);
+            position: sticky !important;
+            top: 64px;
+            width: 100%;
+            height: 85px !important;
+        }
         .bg-gradient {
             display: block;
             position: relative;
@@ -166,37 +197,44 @@ nav {
             z-index: 1;
             height: 100%;
             .navbar {
-                width: 5rem;
                 z-index: 1;
                 align-items: flex-start;
                 transition: 0.4s ease-in-out;
                 overflow: hidden;
-                &:hover {
-                    width: 16rem;
-                    .nav-n-form {
-                        .navbar-nav {
-                            .nav-item {
-                                .nav-link {
-                                    .link-text {
-                                        white-space: nowrap;
-                                        display: block;
-                                    }
-                                }
+                .link-text {
+                    white-space: nowrap;
+                    display: block;
+                }
+                @media (min-width: 572px) {
+                    width: 5rem;
+                    &:hover {
+                        width: 18rem;
+                        .userbrief {
+                            .user-name {
+                                width: auto;
                             }
                         }
                     }
-                    .userbrief {
-                        .user-name {
-                            display: block;
+                }
+                ul {
+                    li {
+                        &:first-child {
+                            @media (max-width: 572px) {
+                                order: 2;
+                            }
                         }
                     }
                 }
                 .userbrief {
                     position: relative;
+                    left: 0;
                     display: flex;
                     align-items: center;
                     width: 100%;
                     overflow: hidden;
+                    @media (max-width: 572px) {
+                        justify-content: center;
+                    }
                     .userpic {
                         width: 5rem;
                         height: 5rem;
@@ -221,42 +259,46 @@ nav {
                     .user-name {
                         @extend %flex-center;
                         font-size: 1.5rem;
-                        display: none;
                         overflow: hidden;
                         span {
                             overflow: hidden;
                             white-space: nowrap;
+                            display: block;
                         }
                     }
                 }
-                .nav-n-form {
+                .navbar-nav {
+                    @extend %flex-center;
                     width: 100%;
-                    .navbar-nav {
-                        @extend %flex-center;
+                    .nav-item {
                         width: 100%;
-                        .nav-item {
-                            width: 100%;
-                            border-bottom-right-radius: 999px;
-                            border-top-right-radius: 999px;
-                            &:hover {
-                                background-color: rgba(0, 0, 0, 0.05);
+                        border-bottom-right-radius: 999px;
+                        border-top-right-radius: 999px;
+                        display: flex;
+                        align-items: center;
+
+                        @media (max-width: 572px) {
+                            border-radius: 50%;
+                        }
+                        &:hover {
+                            background-color: rgba(0, 0, 0, 0.05);
+                        }
+                        .nav-link {
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-start;
+                            height: 5rem;
+                            color: #00a8e8;
+                            font-size: 1.25rem;
+                            font-weight: 500;
+                            i {
+                                font-size: 1.5rem;
+                                min-width: 2rem;
+                                margin: 0 1.5rem;
                             }
-                            .nav-link {
-                                display: flex;
-                                align-items: center;
-                                height: 5rem;
-                                color: #00a8e8;
-                                font-size: 1.25rem;
-                                font-weight: 500;
-                                i {
-                                    font-size: 1.5rem;
-                                    min-width: 2rem;
-                                    margin: 0 1.5rem;
-                                }
-                                .link-text {
-                                    display: none;
-                                    padding-right: 2rem;
-                                }
+                            .link-text {
+                                display: none;
+                                padding-right: 2rem;
                             }
                         }
                     }
@@ -268,12 +310,19 @@ nav {
         position: sticky;
         top: 0;
         z-index: 999;
+        @media screen and (max-width: 991px) {
+            padding: .5rem;
+            background-color: white;
+        }
         .bg-gradient {
             display: block;
             position: relative;
             width: 100%;
-            background-image: linear-gradient(#fff, #f5f5fa);
             z-index: 1;
+
+            @media screen and (min-width: 572px) {
+                background-image: linear-gradient(#fff, #f5f5fa);
+            }
             .navbar {
                 max-width: 1300px;
                 z-index: 1;
@@ -301,10 +350,14 @@ nav {
                     }
                 }
                 .btn-grp {
-                    width: 300px !important;
+                    width: 300px;
+                    @media screen and (max-width: 991px) {
+                        width: 200px;
+                    }
                     .button {
+                        white-space: nowrap;
                         position: relative;
-                        margin: 10px;
+                        margin-left: .5rem;
                         border: none;
                         padding: 0px;
                         width: 50%;
@@ -312,6 +365,9 @@ nav {
                         text-align: center;
                         border-radius: 10px;
                         z-index: 1;
+                        @media screen and (min-width: 572px) {
+                            margin:.5rem
+                        }
                         &.btn-outline {
                             border: 1px solid #00a8e8;
                             background: white;
@@ -350,11 +406,20 @@ nav {
     z-index: 1021;
     transition: all 0.3s ease-in-out;
     transform: scale(0);
-    #close-popup{
-        position: absolute;
-        right: 10px;
-        top: 10px;
+    #close-popup {
+        background-color: white!important;
+        border-color:transparent!important ;
+        color: black!important;
+        font-size: 24px!important;
+        padding: 0!important;
+        margin: 0!important;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%!important ;
         z-index: 2000;
+        position: absolute;
+        right: 0;
+        top: 0;
     }
     .popup-container {
         position: relative;
@@ -367,6 +432,9 @@ nav {
         border-radius: 10px;
         background: #fff;
         transition: 0.6s ease-in-out;
+        @media(max-width:572px) {
+            height: 100%;
+        }
         button {
             border-radius: 20px;
             border: 1px solid #007bff;
@@ -388,11 +456,11 @@ nav {
         .form-container {
             position: absolute;
             height: 100%;
-            left: 0;
             top: 0;
-            width: 60%;
             background: #fff;
-            transition: 1.2s ease-in-out;
+            @media (min-width: 1200px) {
+                transition: 1.2s ease-in-out;
+            }
             a:not(.social) {
                 margin: 10px;
                 text-decoration: none;
@@ -426,7 +494,7 @@ nav {
                         transition: 0.4s ease-in;
                         color: #007bff;
                         cursor: pointer;
-                        i{
+                        i {
                             color: inherit;
                         }
                         &::before {
@@ -491,7 +559,7 @@ nav {
                     padding: 0 40px;
                     text-align: center;
                     transition: 1.2s ease-in-out;
-                    button.ghost{
+                    button.ghost {
                         border: 1px solid #fff;
                         background: transparent;
                     }
@@ -507,10 +575,14 @@ nav {
         }
         &.right-panel-active {
             .signin-form {
-                left: 40%;
+                @media (min-width: 1200px) {
+                    left: 40%;
+                }
             }
             .signup-form {
-                left: 40%;
+                @media (min-width: 1200px) {
+                    left: 40%;
+                }
                 opacity: 1;
                 z-index: 5;
             }
@@ -545,7 +617,12 @@ nav {
     }
 }
 .banner-section {
+    background-color: #271066;
+    @media screen and (max-width: 991px) {
+        padding: 0;
+    }
     .banner {
+            
         z-index: 3;
         color: white;
         margin-left: 100px;
@@ -553,6 +630,11 @@ nav {
         padding: 90px 20px;
         position: relative;
         width: 100%;
+        @media screen and (max-width: 991px) {
+            margin: 0 auto;
+            padding: 60px 20px 45px;
+            text-align: center;
+        }
         h1 {
             font-weight: 700;
             font-size: 40px;
@@ -584,6 +666,9 @@ nav {
         top: 0;
         width: 100%;
         z-index: 2;
+        @media screen and (max-width: 991px){
+            display: none;
+    }
     }
     .backgrImg {
         position: absolute;
@@ -595,6 +680,9 @@ nav {
         width: 100%;
         z-index: 1;
         background-position: 50%;
+        @media screen and (max-width: 991px){
+                opacity: .34;
+        }
     }
 }
 .subject-content {
@@ -738,6 +826,9 @@ nav {
     padding-left: 15px;
     margin-left: auto;
     margin-right: auto;
+    @media (max-width: 572px) {
+        padding: 0;
+    }
     h3 {
         font-size: 24px;
         line-height: 30px;
@@ -797,6 +888,9 @@ nav {
     padding-left: 15px;
     margin-left: auto;
     margin-right: auto;
+    @media (max-width: 572px) {
+        padding: 0;
+    }
     h3 {
         font-size: 24px;
         line-height: 30px;
@@ -903,12 +997,12 @@ nav {
         font-weight: 600;
         font-size: 18px;
         margin-top: 0;
-        margin-bottom: 11px;
+        margin-bottom: 10px;
         color: inherit;
     }
     p {
         color: inherit;
-        margin: 0 0 11px;
+        margin: 0 10px 10px;
         a {
             color: inherit;
         }
@@ -916,6 +1010,7 @@ nav {
     .social-links {
         color: inherit;
         display: flex;
+        margin-left: 10px;
         flex-direction: row;
         .social {
             padding-right: 10px;
@@ -934,27 +1029,27 @@ nav {
     height: 100vh;
     z-index: 1000;
     @-webkit-keyframes spin {
-        0%   { 
-            -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
-            -ms-transform: rotate(0deg);  /* IE 9 */
-            transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+        0% {
+            -webkit-transform: rotate(0deg); /* Chrome, Opera 15+, Safari 3.1+ */
+            -ms-transform: rotate(0deg); /* IE 9 */
+            transform: rotate(0deg); /* Firefox 16+, IE 10+, Opera */
         }
         100% {
-            -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
-            -ms-transform: rotate(360deg);  /* IE 9 */
-            transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+            -webkit-transform: rotate(360deg); /* Chrome, Opera 15+, Safari 3.1+ */
+            -ms-transform: rotate(360deg); /* IE 9 */
+            transform: rotate(360deg); /* Firefox 16+, IE 10+, Opera */
         }
     }
     @keyframes spin {
-        0%   { 
-            -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
-            -ms-transform: rotate(0deg);  /* IE 9 */
-            transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+        0% {
+            -webkit-transform: rotate(0deg); /* Chrome, Opera 15+, Safari 3.1+ */
+            -ms-transform: rotate(0deg); /* IE 9 */
+            transform: rotate(0deg); /* Firefox 16+, IE 10+, Opera */
         }
         100% {
-            -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
-            -ms-transform: rotate(360deg);  /* IE 9 */
-            transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+            -webkit-transform: rotate(360deg); /* Chrome, Opera 15+, Safari 3.1+ */
+            -ms-transform: rotate(360deg); /* IE 9 */
+            transform: rotate(360deg); /* Firefox 16+, IE 10+, Opera */
         }
     }
     #loader {
@@ -965,7 +1060,7 @@ nav {
         border-radius: 50%;
         border: 3px solid transparent;
         border-top-color: #3498db;
-    
+
         -webkit-animation: spin 2s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
         animation: spin 2s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
         &:before {
@@ -978,11 +1073,11 @@ nav {
             border-radius: 50%;
             border: 3px solid transparent;
             border-top-color: #e74c3c;
-    
+
             -webkit-animation: spin 3s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
             animation: spin 3s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
         }
-    
+
         &:after {
             content: "";
             position: absolute;
@@ -993,9 +1088,9 @@ nav {
             border-radius: 50%;
             border: 3px solid transparent;
             border-top-color: #f9c922;
-    
+
             -webkit-animation: spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
-              animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+            animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
         }
     }
 }

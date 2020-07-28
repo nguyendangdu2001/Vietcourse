@@ -13,12 +13,17 @@ a {
 div {
     display: block;
 }
-div.fullwitdh {
+.fullwitdh {
     padding: 48px 16px;
     width: 100%;
     background: linear-gradient(#003459, #003459, #007ea7);
     /*background-color: #29303B #007EA7;*/
     line-height: 1.43px;
+}
+@media (max-width:572px) {
+    .fullwitdh {
+        padding: 16px 8px;
+    }
 }
 div.left {
     margin-top: 15px;
@@ -277,6 +282,9 @@ span.value {
 div.teacher-right {
     flex: 1;
     min-width: 1px;
+}
+.history-teacher {
+    position: relative;
 }
 div.title-name {
     font-weight: 700;

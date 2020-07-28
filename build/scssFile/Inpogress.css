@@ -1,16 +1,20 @@
-
 /* TRANG THEO DÕI KHÓA HỌC */
-.InProgressCourses{
+.InProgressCourses {
     padding: 32px 0;
     background-color: #f3f3f3;
 }
-.InProgressCourses .center{
+@media (max-width:572px) {
+    .InProgressCourses {
+        padding: 16px 8px;
+    }
+}
+.InProgressCourses .center {
     position: relative;
     max-width: 956px;
     margin: auto;
     background: #fff;
 }
-.InProgressCourses .Inprogress{
+.InProgressCourses .Inprogress {
     position: relative;
     width: 100%;
     box-shadow: rgba(31, 31, 31, 0.12) 0px 1px 6px, rgba(31, 31, 31, 0.12) 0px 1px 4px;
@@ -18,18 +22,18 @@
     border-radius: 3px;
     overflow: hidden;
 }
-.InProgressCourses .Inprogress header{
+.InProgressCourses .Inprogress header {
     font-size: 14px;
     line-height: 21px;
 }
-.InProgressCourses .Inprogress header .CourseHeader{
+.InProgressCourses .Inprogress header .CourseHeader {
     padding: 11px 28px;
     background: #20589d;
     position: relative;
     color: #fff;
     min-height: 40px;
 }
-.InProgressCourses .course-main-content{
+.InProgressCourses .course-main-content {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -38,12 +42,22 @@
     justify-content: center;
     padding: 10px 28px;
 }
-.InProgressCourses .course-main-content .course-main-content-center{
+@media (max-width:572px) {
+    .InProgressCourses .course-main-content {
+        height: auto;
+    }
+}
+.InProgressCourses .course-main-content .course-main-content-center {
     display: flex;
     width: 100%;
     position: relative;
 }
-.InProgressCourses .course-main-content .course-main-content-center .course-main-content-primary a h1{
+@media (max-width: 572px) {
+    .InProgressCourses .course-main-content .course-main-content-center .course-main-content-primary {
+        padding: 0;
+    }
+}
+.InProgressCourses .course-main-content .course-main-content-center .course-main-content-primary a h1 {
     color: #3278ce;
     font-size: 20px;
     line-height: 28px;
@@ -51,7 +65,7 @@
     font-weight: 700;
 }
 .InProgressCourses .course-main-content .course-main-content-center .course-main-content-primary span {
-    font-size: .75rem;
+    font-size: 0.75rem;
     line-height: 1.125rem;
     text-align: center;
     vertical-align: center;
@@ -64,7 +78,11 @@
     justify-content: center;
     align-items: center;
 }
-.InProgressCourses .course-main-content .course-main-content-center .course-main-content-secondary .course-main-content-button{
+.InProgressCourses
+    .course-main-content
+    .course-main-content-center
+    .course-main-content-secondary
+    .course-main-content-button {
     display: flex;
     flex-direction: column;
     max-width: 200px;
@@ -72,7 +90,23 @@
     width: 100%;
     margin-left: auto;
 }
-.InProgressCourses .course-main-content .course-main-content-center .course-main-content-secondary .course-main-content-button .Course-link-button a {
+@media (max-width: 572px) {
+    .InProgressCourses
+        .course-main-content
+        .course-main-content-center
+        .course-main-content-secondary
+        .course-main-content-button {
+        margin-right: auto;
+        margin-top: 8px;
+    }
+}
+.InProgressCourses
+    .course-main-content
+    .course-main-content-center
+    .course-main-content-secondary
+    .course-main-content-button
+    .Course-link-button
+    a {
     min-width: 180px;
     text-align: center;
     font-weight: 700;
@@ -96,10 +130,10 @@
     border-top: 1px solid #d2d2d2;
     margin: 0 28px;
     padding: 15px 0;
-    font-size: .625rem;
+    font-size: 0.625rem;
 }
-.InProgressCourses .Course-footer .partner-name{
+.InProgressCourses .Course-footer .partner-name {
     text-transform: uppercase;
-    font-size: .875rem;
+    font-size: 0.875rem;
     padding-left: 10px;
 }
