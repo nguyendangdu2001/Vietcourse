@@ -43,24 +43,24 @@ router.post("/addcart", (req, res) => {
     User.findByIdAndUpdate(
         req.user.id,
         { $addToSet: { cart: req.body.courseId } },
-        { safe: true, new: true, useFindAndModify: true },
-        (err, data) => {
+        { safe: true, new: true, useFindAndModify: true }
+    )
+        .exec((err, data) => {
             if (err) res.sendStatus(404);
             res.send(data.cart);
-        }
-    );
+        });
 });
 router.post("/removecart", (req, res) => {
     if (!req.user) res.status(401).send({ mes: "Unauthorize" });
     User.findByIdAndUpdate(
         req.user.id,
         { $pull: { cart: req.body.courseId } },
-        { safe: true, multi: true, new: true, useFindAndModify: true },
-        (err, data) => {
+        { safe: true, multi: true, new: true, useFindAndModify: true }
+    )
+        .exec((err, data) => {
             if (err) res.sendStatus(404);
             res.send(data.cart);
-        }
-    );
+        });
 });
 router.post("/buy", async (req, res) => {
     if (!req.user) res.status(401).send({ mes: "Unauthorize" });
@@ -74,11 +74,11 @@ router.post("/buy", async (req, res) => {
             await User.findByIdAndUpdate(
                 req.user.id,
                 { $addToSet: { ownCourses: { $each: req.body.courses } }, $set: { cart: [] } },
-                { useFindAndModify: true },(err,user)=>{
-                    res.sendStatus(204)
+                { useFindAndModify: true },
+                (err, user) => {
+                    res.sendStatus(204);
                 }
             );
-            
         }
     } catch (error) {
         res.status(409).send(error);
@@ -89,7 +89,7 @@ router.get("/owncourse", (req, res) => {
     User.findById(req.user.id)
         .populate("ownCourses")
         .exec((err, data) => {
-            if(err) throw err
+            if (err) throw err;
             res.send(data.ownCourses);
         });
 });

@@ -5,6 +5,9 @@ import passport from 'passport'
 import '../passport/passportSetUp.js'
 
 const router = express.Router();
+router.post('/google/onetap',passport.authenticate("google-id-token"),(req,res)=> {
+    res.send(req.user)
+});
 router.post('/google',passport.authenticate("google-token"),(req,res)=> {
     res.send(req.user)
 });
