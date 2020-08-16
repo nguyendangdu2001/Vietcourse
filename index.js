@@ -52,7 +52,7 @@ app.post("/google", passport.authenticate("google-oauth-token"),(req,res)=> {
 });
 
 app.get('*',(req,res)=>{
-    res.sendfile(path.join("./build", "index.html"))
+    res.sendFile(path.join("./build", "index.html"))
 })
 
 app.listen(port, () => {
