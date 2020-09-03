@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
     name: { type: String },
     userName: { type: String },
     password: { type: String },
+    role:{type:String},
     userPic: { type: String },
     cart: [{type:Schema.Types.ObjectId, ref: 'Course'}],
     ownCourses:[{type:Schema.Types.ObjectId, ref: 'Course'}],
