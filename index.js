@@ -44,22 +44,19 @@ app.use("/api/user", userRoute);
 app.use("/api/user/auth", authRoute);
 app.use("/api/course", courseRoute);
 
-app.post("/google", passport.authenticate("google-oauth-token"), (req, res) => {
-    res.send(req.user);
-});
 app.get("*.js", function (req, res, next) {
     req.url = req.url + ".gz";
     res.set("Content-Encoding", "gzip");
     res.set("Content-Type", "text/javascript");
     next();
 });
-
 app.get("*.css", function (req, res, next) {
     req.url = req.url + ".gz";
     res.set("Content-Encoding", "gzip");
     res.set("Content-Type", "text/css");
     next();
 });
+
 app.use(express.static("build"));
 app.get("*", (req, res) => {
     res.sendFile(path.resolve("./build/index.html"));
